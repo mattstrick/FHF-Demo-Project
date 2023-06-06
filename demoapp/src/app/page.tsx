@@ -15,19 +15,10 @@ const showsArray = [
 export default function Home() {
   const [showPrice, setShowPrice] = useState(showsArray[0].price);
   const [ticketMultiplier, setTicketMultiplier] = useState(1);
-  const [total, setTotal] = useState(-1);
-
-  const handleBuyTickets = (e: React.SyntheticEvent) => {
-    e.preventDefault();
-
-    if (total > -1) {
-        console.log(`Total: ${total}`);
-    }
-  };
 
   return (
     <main className="h-screen">
-      <form onSubmit={handleBuyTickets}>
+      <form action={"/API/submit-form"} method="GET">
         <ShowSection
           onShowChange={setShowPrice}
           shows={showsArray}
@@ -39,7 +30,7 @@ export default function Home() {
             <PaymentSection />
           </div>
           <div>
-            <TotalSection showPrice={showPrice} multiplier={ticketMultiplier} onUpdate={setTotal} />
+            <TotalSection showPrice={showPrice} multiplier={ticketMultiplier} />
           </div>
         </section>
       </form>

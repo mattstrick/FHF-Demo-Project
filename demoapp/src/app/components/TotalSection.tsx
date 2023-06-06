@@ -3,14 +3,10 @@ import { useEffect } from "react";
 const SERVICE_FEE = 10.25;
 const ORDER_PROCESSING_FEE = 2.95;
 
-export default function TotalSection({ showPrice, multiplier, onUpdate }: any) {
+export default function TotalSection({ showPrice, multiplier }: any) {
   const totalTicketPrice = (showPrice * multiplier).toFixed(2);
   const totalServiceFee = (SERVICE_FEE * multiplier).toFixed(2);
   const subTotal = (parseFloat(totalServiceFee) + parseFloat(totalTicketPrice) + ORDER_PROCESSING_FEE).toFixed(2);
-
-  useEffect(() => {
-    onUpdate(subTotal);
-  }, [onUpdate, subTotal])
 
   return (
     <section className="border-2 rounded border-slate-300 border-solid p-8 m-2 bg-white">
@@ -25,6 +21,7 @@ export default function TotalSection({ showPrice, multiplier, onUpdate }: any) {
       <p>
         Order Processing Fee: ${ORDER_PROCESSING_FEE}
       </p>
+      <input type="text" hidden defaultValue={subTotal} name="subTotal" />
       <input type="submit" value="Buy Tickets" className="rounded-full bg-slate-200 px-8" />
     </section>
   );
