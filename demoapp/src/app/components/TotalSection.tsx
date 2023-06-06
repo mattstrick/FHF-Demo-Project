@@ -3,7 +3,12 @@ import { useEffect } from "react";
 const SERVICE_FEE = 10.25;
 const ORDER_PROCESSING_FEE = 2.95;
 
-export default function TotalSection({ showPrice, multiplier }: any) {
+type Props = {
+    showPrice: number;
+    multiplier: number;
+}
+
+export default function TotalSection({ showPrice, multiplier }: Props) {
   const totalTicketPrice = (showPrice * multiplier).toFixed(2);
   const totalServiceFee = (SERVICE_FEE * multiplier).toFixed(2);
   const subTotal = (parseFloat(totalServiceFee) + parseFloat(totalTicketPrice) + ORDER_PROCESSING_FEE).toFixed(2);

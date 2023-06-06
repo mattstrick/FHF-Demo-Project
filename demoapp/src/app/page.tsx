@@ -18,20 +18,20 @@ export default function Home() {
 
   return (
     <main className="h-screen">
-      <form action={"/API/submit-form"} method="GET">
+      <form action={"/API/submit-form"} method="GET" className="max-w-5xl mx-auto">
         <ShowSection
           onShowChange={setShowPrice}
           shows={showsArray}
           onTicketChange={setTicketMultiplier}
         />
         <section className="flex justify-between">
-          <div>
+          <section>
             <DeliverySection />
             <PaymentSection />
-          </div>
-          <div>
+          </section>
+          <section>
             <TotalSection showPrice={showPrice} multiplier={ticketMultiplier} />
-          </div>
+          </section>
         </section>
       </form>
     </main>

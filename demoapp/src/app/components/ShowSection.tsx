@@ -3,7 +3,13 @@
 import React, { useState } from "react";
 import { Show } from "./types";
 
-export default function ShowSection({onShowChange, shows, onTicketChange}: any) {  
+type Props = {
+    onShowChange: (arg0: number) => void;
+    shows: Show[];
+    onTicketChange: (arg0: number) => void;
+}
+
+export default function ShowSection({onShowChange, shows, onTicketChange}: Props) {  
   const [selectedShow, setSelectedShow] = useState(0);
   const [numberOfTickets, setNumberOfTickets] = useState(1);
 
