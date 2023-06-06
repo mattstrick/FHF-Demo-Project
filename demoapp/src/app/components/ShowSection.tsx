@@ -23,8 +23,8 @@ export default function ShowSection({onShowChange, shows, onTicketChange}: any) 
 
   return (
     <section className="border-2 rounded border-slate-300 border-solid p-8 m-2 bg-white">
-      <h2 className="font-bold">Show</h2>
-      <select onChange={handleShowChange} value={selectedShow}>
+      <h2 className="font-bold">Upcoming Shows</h2>
+      <select onChange={handleShowChange} value={selectedShow} className="border-2 border-solid border-indigo-500">
         {shows.map((show: Show, index: number) => (
           <option value={index} key={show.id}>
             {show.name}
@@ -32,12 +32,11 @@ export default function ShowSection({onShowChange, shows, onTicketChange}: any) 
         ))}
       </select>
       <section>
-        <h1>{shows[selectedShow].name}</h1>
         <p>Price: ${shows[selectedShow].price}</p>
       </section>
-      <section>
+      <section className="flex">
         <h1>Number of Tickets:</h1>
-        <select onChange={handleTicketChange} value={numberOfTickets}>
+        <select onChange={handleTicketChange} value={numberOfTickets} className="border-2 border-solid border-indigo-500">
             <option value={1}>1</option>
             <option value={2}>2</option>
             <option value={3}>3</option>
