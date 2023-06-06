@@ -15,22 +15,34 @@ const showsArray = [
 export default function Home() {
   const [showPrice, setShowPrice] = useState(showsArray[0].price);
   const [ticketMultiplier, setTicketMultiplier] = useState(1);
+  const [total, setTotal] = useState(-1);
+
+  const handleBuyTickets = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+
+    if (total > -1) {
+        console.log(`Total: ${total}`);
+    }
+  };
+
   return (
     <main className="h-screen">
-      <ShowSection
-        onShowChange={setShowPrice}
-        shows={showsArray}
-        onTicketChange={setTicketMultiplier}
-      />
-      <section className="flex justify-between">
-        <div>
-          <DeliverySection />
-          <PaymentSection />
-        </div>
-        <div>
-          <TotalSection showPrice={showPrice} multiplier={ticketMultiplier} />
-        </div>
-      </section>
+      <form onSubmit={handleBuyTickets}>
+        <ShowSection
+          onShowChange={setShowPrice}
+          shows={showsArray}
+          onTicketChange={setTicketMultiplier}
+        />
+        <section className="flex justify-between">
+          <div>
+            <DeliverySection />
+            <PaymentSection />
+          </div>
+          <div>
+            <TotalSection showPrice={showPrice} multiplier={ticketMultiplier} onUpdate={setTotal} />
+          </div>
+        </section>
+      </form>
     </main>
   );
 }
